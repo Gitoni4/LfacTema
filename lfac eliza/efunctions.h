@@ -25,7 +25,7 @@ struct varval
    char* tip; 
 };
 
-struct var** programvars;
+struct var** programvars ;
 int nrvar = 0;
 struct var** listdecl;
 int nrdecl;
@@ -33,11 +33,17 @@ int nrdecl;
 int verifdeclvar (struct var* x, char* scopex)
 {
     for (int i = 0; i < nrvar; i++)
-    {
-        if (strcmp(programvars[i]->nume, x->nume) == 0)
+    { 
+        printf("hai mergi\n");
+        fflush(stdout);
+        if (programvars[i]->nume == x->nume)
         {
+            printf("hai mergi\n");
+        fflush(stdout);
            if (strcmp(programvars[i]->varscope, x->varscope) == 0)
            {
+               printf("hai mergi\n");
+        fflush(stdout);
                return 1;
            }
         }
@@ -47,6 +53,7 @@ int verifdeclvar (struct var* x, char* scopex)
 
 struct var** curentlistdecl (struct var** list, struct var* x, int lungime)
 {
+
    struct var** curentlist = (struct var**)malloc(sizeof(size_t) * (lungime + 1));
    for (int i = 0; i < lungime; i++)
    {
@@ -66,10 +73,14 @@ void atribuiretiplist(struct var** list, char* tip2, int lungime, char* scopex)
     }
     else
     {
+      
       for (int i = 0; i < lungime; i++)
       {
-          strcpy(list[i]->tip, tip2);
+          list[i]->varscope = (char*)malloc(128);
+          list[i]->tip = (char*)malloc(128);
           strcpy(list[i]->varscope, scopex);
+          strcpy(list[i]->tip, tip2);
+          
       }      
     }
 }
@@ -78,9 +89,7 @@ void adaugarelist (struct var** list, int lungime)
 {
     for (int i = 0; i < lungime; i++)
     {
-        programvars[nrvar] = list[i];
-        nrvar++;
+        programvars[nrvar++] = list[i];  
     }
+    free(list);
 }
-
-    

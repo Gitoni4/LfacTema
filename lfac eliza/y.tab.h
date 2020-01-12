@@ -120,7 +120,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 12 "elfac.y" /* yacc.c:1909  */
+#line 14 "elfac.y" /* yacc.c:1909  */
  
   int valINT;
   float valFLOAT;

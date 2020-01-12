@@ -4,6 +4,8 @@ extern FILE* yyin;
 extern char* yytext;
 extern int yylineno;
 extern int yylex();
+extern int nrdecl;
+extern int nrvar;
 int yyerror(char* s);
 %}
 
@@ -46,12 +48,13 @@ declaratii:  listedeclaratie ';'
 listedeclaratie: VAR TIPVAR listadeclaratie 
                  { 
                      atribuiretiplist($3, $2, nrdecl, "global"); 
-                     adaugarelist($3, nrdecl);                      
+                     adaugarelist($3, nrdecl);                    
                  }
                ;
 
 listadeclaratie: listadeclaratie ',' declaratie 
                  {
+                     
                      if (verifdeclvar($3, "global") == 1) 
                      {  
                           printf("Variabila : %s a fost deja declarata\n", $3->nume);
@@ -60,26 +63,29 @@ listadeclaratie: listadeclaratie ',' declaratie
                      }    
                      else
                      {
-                          $$ = curentlistdecl($1, $3, nrdecl);
+                          $$ = curentlistdecl($1, $3, nrdecl++);
                      }
                  }
                | declaratie 
                  { 
+                     nrdecl = 0;
                      if (verifdeclvar($1, "global") == 1) 
                      {  
                           printf("Variabila : %s a fost deja declarata\n", $1->nume);
                           fflush(stdout);
                      }
                      else
-                     {
-                            nrdecl = 0;
-                            $$ = curentlistdecl (NULL, $1, nrdecl);
+                     {      
+                       printf("%s %s, %d %f %s\n", $1->nume, $1->tip, $1->valint, $1->valfloat, $1->valstring);
+                            $$ = curentlistdecl (NULL, $1, nrdecl++);
+                            
                      }
                  }
                ;
 
 declaratie: ID 
             { 
+              
               $$ = (struct var*)malloc(sizeof(struct var));
               $$->nume = (char*)malloc(128);
               strcpy($$->nume, $1);
@@ -89,27 +95,27 @@ declaratie: ID
               $$ = (struct var*)malloc(sizeof(struct var));
               $$->nume = (char*)malloc(128);
               $$->tip = (char*)malloc(128);
-                if (strcmp($4->tip, "float") == 0)
-                {
+              if (strcmp($4->tip, "float") == 0)
+              {
                 strcpy($$->nume, $1);
                 $$->valfloat = $4->valfloat;
-                }
-                if (strcmp($4->tip, "int") == 0)
-                {
+              }
+              if (strcmp($4->tip, "int") == 0)
+              {
                 strcpy($$->nume, $1);
                 $$->valint = $4->valint;
-                }
-                if (strcmp($4->tip, "char") == 0)
-                {
+              }
+              if (strcmp($4->tip, "char") == 0)
+              {
                 strcpy($$->nume, $1);
                 $$->valchar = $4->valchar;
-                }
-                if (strcmp($4->tip, "string") == 0)
-                {
+              }
+              if (strcmp($4->tip, "string") == 0)
+              {
                 strcpy($$->nume, $1);
                 $$->valstring = (char *)malloc(128);
                 strcpy($$->valstring, $4->valstring);
-                }
+              }
                 strcpy($$->tip, $4->tip);
               }
             
@@ -147,6 +153,12 @@ init: NR
         ; 
       
 instructiuni: MAIN BGIN bloc END  
+            { for (int i = 0; i < nrvar; i++)
+              {
+                 printf("Variabilele urmatoare au fost declarate: %s \n", programvars[i]->nume);
+                 fflush(stdout);
+              }
+            }
      	     ;
      
 bloc: instructiune 
@@ -165,16 +177,13 @@ instructiune: ID '-' '>' expresie  ';'
             | RETRN BOOL ';'
             ;
 
-instrIF: IF '(' listaexprIF ')' THEN '{' blocIF '}' 
+instrIF: IF '(' listaexprIF ')' THEN '{' bloc '}' 
         {
           printf("linia %d merge\n", yylineno);
              fflush(stdout);
         }
-       | IF '(' listaexprIF ')' THEN '{' blocIF '}' ELSE '{' blocIF '}'
+       | IF '(' listaexprIF ')' THEN '{' bloc '}' ELSE '{' bloc '}'
        ;
-
-blocIF: bloc
-      ;
 
 listaexprIF: expresieIF AND listaexprIF
            | expresieIF OR listaexprIF
@@ -205,7 +214,7 @@ expresie: expresie '+' expresie
           {
              printf("linia %d merge\n", yylineno);
              fflush(stdout);
-             $$ = (struct varval*)malloc(sizeof(struct varval));
+            
              printf("linia %d merge\n", yylineno);
              fflush(stdout);
              if (((strcmp($1->tip, "int") == 0 || strcmp($1->tip, "string") == 0) && (strcmp($3->tip, "string") == 0 || strcmp($3->tip, "char") == 0))
@@ -262,7 +271,7 @@ expresie: expresie '+' expresie
           } 
 	      | expresie '-' expresie 
         {
-             $$ = (struct varval*)malloc(sizeof(struct varval));
+            
              if (((strcmp($1->tip, "int") == 0 || strcmp($1->tip, "string") == 0) && (strcmp($3->tip, "string") == 0 || strcmp($3->tip, "char") == 0))
                  || ((strcmp($3->tip, "int") == 0 || strcmp($3->tip, "string") == 0) && (strcmp($1->tip, "string") == 0 && strcmp($1->tip, "char") == 0)))
              {
@@ -303,7 +312,7 @@ expresie: expresie '+' expresie
           } 
 	      | expresie '*' expresie 
         {
-             $$ = (struct varval*)malloc(sizeof(struct varval));
+             
              if (((strcmp($1->tip, "int") == 0 || strcmp($1->tip, "string") == 0) && (strcmp($3->tip, "string") == 0 || strcmp($3->tip, "char") == 0))
                  || ((strcmp($3->tip, "int") == 0 || strcmp($3->tip, "string") == 0) && (strcmp($1->tip, "string") == 0 && strcmp($1->tip, "char") == 0)))
              {
@@ -344,7 +353,7 @@ expresie: expresie '+' expresie
           } 
 	      | expresie '/' expresie 
         {
-             $$ = (struct varval*)malloc(sizeof(struct varval));
+            
              if (((strcmp($1->tip, "int") == 0 || strcmp($1->tip, "string") == 0) && (strcmp($3->tip, "string") == 0 || strcmp($3->tip, "char") == 0))
                  || ((strcmp($3->tip, "int") == 0 || strcmp($3->tip, "string") == 0) && (strcmp($1->tip, "string") == 0 && strcmp($1->tip, "char") == 0)))
              {
@@ -385,9 +394,38 @@ expresie: expresie '+' expresie
           } 
         | init 
         { 
-                       printf("linia %d merge\n", yylineno);
-             fflush(stdout);
+          printf("linia %d merge\n", yylineno);
+          fflush(stdout);
           $$ = $1; 
+        }
+        | ID 
+        {
+          $$ = (struct varval*)malloc(sizeof(struct varval));
+          $$->tip = (char*)malloc(128);
+          for (int i = 0; i < nrvar; i++)
+          {
+            if (strcmp(programvars[i]->nume, $1) == 0)
+            {
+              strcpy($$->tip, $1);
+              if (strcmp($$->tip, "int") == 0)
+              {
+                 $$->valint = programvars[i]->valint;
+              }
+              if (strcmp($$->tip, "float") == 0)
+              {
+                 $$->valfloat = programvars[i]->valfloat;
+              }
+              if (strcmp($$->tip, "string") == 0)
+              {
+                 $$->valstring = (char*)malloc(128);
+                 strcpy($$->valstring, programvars[i]->valstring);
+              }
+            }
+            else
+            {
+              printf("variabila nu a fost declarata\n");
+            }
+          }
         }
         ;
         
@@ -406,4 +444,9 @@ int main(int argc, char** argv)
 {
   yyin=fopen(argv[1],"r");
   yyparse();
+  for (int i = 0; i < nrvar; i++)
+              {
+                 printf("Variabilele urmatoare au fost declarate: %s \n", programvars[i]->nume);
+                 fflush(stdout);
+              }
 }

@@ -3,11 +3,12 @@ var int b -> 4;
 var char l;
 var float o -> 3.0;
 var float r;
-
+var int a;
 main
 begin
   b -> 3;
   b -> 3 + 1;
+  b -> 6;
   if (a equal b) then
   {
     print (l);
