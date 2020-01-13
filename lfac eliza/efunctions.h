@@ -9,7 +9,6 @@ struct var
    char valchar;
    char* valstring;
    float valfloat;
-   int valbool;
    char* varscope;
    char* tip;
    char* nume;
@@ -25,27 +24,31 @@ struct varval
    char* tip; 
 };
 
-struct var** programvars ;
+struct funct
+{
+  char* nume;
+  char* freturn;
+};
+
+struct var* programvars[1000] ;
 int nrvar = 0;
 struct var** listdecl;
+struct funct* programfuncts[25];
+int nrfunctii = 0;
+int nrparam;
 int nrdecl;
 
 int verifdeclvar (struct var* x, char* scopex)
 {
     for (int i = 0; i < nrvar; i++)
     { 
-        printf("hai mergi\n");
-        fflush(stdout);
-        if (programvars[i]->nume == x->nume)
+        if (strcmp(programvars[i]->nume, x->nume) == 0)
         {
-            printf("hai mergi\n");
-        fflush(stdout);
            if (strcmp(programvars[i]->varscope, x->varscope) == 0)
            {
-               printf("hai mergi\n");
-        fflush(stdout);
-               return 1;
+               return i;
            }
+           return i;
         }
     }
     return -1;
@@ -64,6 +67,7 @@ struct var** curentlistdecl (struct var** list, struct var* x, int lungime)
       free(list);
    return curentlist;
 }
+
 
 void atribuiretiplist(struct var** list, char* tip2, int lungime, char* scopex)
 {
@@ -87,9 +91,50 @@ void atribuiretiplist(struct var** list, char* tip2, int lungime, char* scopex)
 
 void adaugarelist (struct var** list, int lungime)
 {
+    
     for (int i = 0; i < lungime; i++)
     {
-        programvars[nrvar++] = list[i];  
+        if(!programvars[nrvar])
+        {
+            programvars[nrvar]=(struct var*)malloc(sizeof(struct var));
+        }
+        
+        if (list[i]->valint)
+        {
+            programvars[nrvar]->valint = list[i]->valint;
+        }
+        programvars[nrvar]->valstring = (char*)malloc(128);
+        if(list[i]->valstring)
+        {
+            strcpy(programvars[nrvar]->valstring, list[i]->valstring);//  char* valstring;
+        }
+        programvars[nrvar]->valfloat = list[i]->valfloat;//  float valfloat;
+        programvars[nrvar]->varscope = (char*)malloc(128);
+        if(list[i]->varscope)
+        {
+            strcpy(programvars[nrvar]->varscope, list[i]->varscope);//  char* varscope;
+        }
+        programvars[nrvar]->tip = (char*)malloc(128);
+        if(list[i]->tip)
+        {
+            strcpy(programvars[nrvar]->tip, list[i]->tip);//  char* tip;
+        }
+        programvars[nrvar]->nume = (char*)malloc(128);
+        if(list[i]->nume)
+        {
+            strcpy(programvars[nrvar++]->nume, list[i]->nume);
+        }     //  char* nume;;  
+        free(list[i]); 
     }
-    free(list);
 }
+
+void adaugarevarlist(struct var* x)
+{
+    programvars[nrvar]=(struct var*)malloc(sizeof(struct var));
+    programvars[nrvar]->nume = (char*)malloc(128);
+    strcpy(programvars[nrvar]->nume, x->nume);
+    programvars[nrvar]->tip = (char*)malloc(128);
+    strcpy(programvars[nrvar++]->tip, x->tip);
+}
+
+

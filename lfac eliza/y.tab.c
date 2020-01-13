@@ -71,9 +71,10 @@ extern int yylineno;
 extern int yylex();
 extern int nrdecl;
 extern int nrvar;
+extern int nrfunctii;
 int yyerror(char* s);
 
-#line 77 "y.tab.c" /* yacc.c:339  */
+#line 78 "y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -114,33 +115,36 @@ extern int yydebug;
     RETURN = 261,
     TIPVAR = 262,
     ID = 263,
-    SINGLECHAR = 264,
-    STRING = 265,
-    BGIN = 266,
-    END = 267,
-    MAIN = 268,
-    IF = 269,
-    CLASS = 270,
-    INTERN = 271,
-    EXTERN = 272,
-    INT = 273,
-    ELSE = 274,
-    RETRN = 275,
-    AND = 276,
-    OR = 277,
-    EQUAL = 278,
-    GE = 279,
-    LE = 280,
-    GL = 281,
-    THEN = 282,
-    WHILE = 283,
-    DO = 284,
-    CHAR = 285,
-    BOOL = 286,
-    FLOAT = 287,
-    NRFLOAT = 288,
-    FALSE = 289,
-    TRUE = 290
+    FUNCTIONVAR = 264,
+    EVAL = 265,
+    CLASSVAR = 266,
+    SINGLECHAR = 267,
+    STRING = 268,
+    BGIN = 269,
+    END = 270,
+    MAIN = 271,
+    IF = 272,
+    CLASS = 273,
+    INTERN = 274,
+    EXTERN = 275,
+    INT = 276,
+    ELSE = 277,
+    RETRN = 278,
+    AND = 279,
+    OR = 280,
+    EQUAL = 281,
+    GE = 282,
+    LE = 283,
+    GL = 284,
+    THEN = 285,
+    WHILE = 286,
+    DO = 287,
+    CHAR = 288,
+    BOOL = 289,
+    FLOAT = 290,
+    NRFLOAT = 291,
+    FALSE = 292,
+    TRUE = 293
   };
 #endif
 /* Tokens.  */
@@ -150,40 +154,43 @@ extern int yydebug;
 #define RETURN 261
 #define TIPVAR 262
 #define ID 263
-#define SINGLECHAR 264
-#define STRING 265
-#define BGIN 266
-#define END 267
-#define MAIN 268
-#define IF 269
-#define CLASS 270
-#define INTERN 271
-#define EXTERN 272
-#define INT 273
-#define ELSE 274
-#define RETRN 275
-#define AND 276
-#define OR 277
-#define EQUAL 278
-#define GE 279
-#define LE 280
-#define GL 281
-#define THEN 282
-#define WHILE 283
-#define DO 284
-#define CHAR 285
-#define BOOL 286
-#define FLOAT 287
-#define NRFLOAT 288
-#define FALSE 289
-#define TRUE 290
+#define FUNCTIONVAR 264
+#define EVAL 265
+#define CLASSVAR 266
+#define SINGLECHAR 267
+#define STRING 268
+#define BGIN 269
+#define END 270
+#define MAIN 271
+#define IF 272
+#define CLASS 273
+#define INTERN 274
+#define EXTERN 275
+#define INT 276
+#define ELSE 277
+#define RETRN 278
+#define AND 279
+#define OR 280
+#define EQUAL 281
+#define GE 282
+#define LE 283
+#define GL 284
+#define THEN 285
+#define WHILE 286
+#define DO 287
+#define CHAR 288
+#define BOOL 289
+#define FLOAT 290
+#define NRFLOAT 291
+#define FALSE 292
+#define TRUE 293
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 14 "elfac.y" /* yacc.c:355  */
+#line 15 "elfac.y" /* yacc.c:355  */
  
   int valINT;
   float valFLOAT;
@@ -194,7 +201,7 @@ union YYSTYPE
   struct var** varvector;
   struct varval* valoare;
 
-#line 198 "y.tab.c" /* yacc.c:355  */
+#line 205 "y.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -211,7 +218,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 215 "y.tab.c" /* yacc.c:358  */
+#line 222 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -453,21 +460,21 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  6
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   130
+#define YYLAST   251
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  49
+#define YYNTOKENS  54
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  17
+#define YYNNTS  37
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  49
+#define YYNRULES  90
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  120
+#define YYNSTATES  219
 
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   290
+#define YYMAXUTOK   294
 
 #define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -480,15 +487,15 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-      45,    46,    38,    36,    41,    37,     2,    39,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,    40,
-       2,     2,    42,     2,     2,     2,     2,     2,     2,     2,
+      50,    51,    41,    39,    48,    40,     2,    42,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,    47,    46,
+       2,     2,    49,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,    43,     2,    44,     2,     2,     2,     2,     2,     2,
+       2,    52,     2,    53,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,    47,     2,    48,     2,     2,     2,     2,
+       2,     2,     2,    44,     2,    45,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -505,18 +512,23 @@ static const yytype_uint8 yytranslate[] =
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
-      35
+      35,    36,    37,    38,    43
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    42,    42,    44,    45,    48,    55,    69,    86,    93,
-     124,   131,   138,   145,   155,   164,   165,   168,   169,   170,
-     171,   172,   173,   174,   175,   176,   177,   180,   185,   188,
-     189,   190,   193,   194,   195,   196,   199,   202,   203,   204,
-     207,   208,   209,   210,   213,   272,   313,   354,   395,   401
+       0,    44,    44,    46,    47,    50,    53,    54,    57,    58,
+      61,    62,    65,    68,    69,    72,    73,    76,    77,    78,
+      81,    82,    85,    99,   104,   111,   123,   124,   127,   134,
+     150,   167,   175,   207,   214,   221,   231,   232,   235,   236,
+     237,   238,   239,   240,   241,   242,   243,   248,   249,   252,
+     260,   275,   292,   302,   335,   342,   349,   356,   366,   369,
+     370,   373,   412,   413,   414,   415,   416,   417,   434,   435,
+     438,   439,   440,   443,   444,   445,   446,   449,   452,   453,
+     454,   457,   458,   459,   460,   463,   522,   570,   618,   666,
+     692
 };
 #endif
 
@@ -526,15 +538,19 @@ static const yytype_uint16 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "VAR", "PRINT", "NR", "RETURN", "TIPVAR",
-  "ID", "SINGLECHAR", "STRING", "BGIN", "END", "MAIN", "IF", "CLASS",
-  "INTERN", "EXTERN", "INT", "ELSE", "RETRN", "AND", "OR", "EQUAL", "GE",
-  "LE", "GL", "THEN", "WHILE", "DO", "CHAR", "BOOL", "FLOAT", "NRFLOAT",
-  "FALSE", "TRUE", "'+'", "'-'", "'*'", "'/'", "';'", "','", "'>'", "'['",
-  "']'", "'('", "')'", "'{'", "'}'", "$accept", "program", "declaratii",
-  "listedeclaratie", "listadeclaratie", "declaratie", "init",
-  "instructiuni", "bloc", "instructiune", "instrIF", "listaexprIF",
-  "expresieIF", "instrWHILE", "listaexprWHILE", "expresieWHILE",
-  "expresie", YY_NULLPTR
+  "ID", "FUNCTIONVAR", "EVAL", "CLASSVAR", "SINGLECHAR", "STRING", "BGIN",
+  "END", "MAIN", "IF", "CLASS", "INTERN", "EXTERN", "INT", "ELSE", "RETRN",
+  "AND", "OR", "EQUAL", "GE", "LE", "GL", "THEN", "WHILE", "DO", "CHAR",
+  "BOOL", "FLOAT", "NRFLOAT", "FALSE", "TRUE", "'+'", "'-'", "'*'", "'/'",
+  "\"->\"", "'{'", "'}'", "';'", "':'", "','", "'>'", "'('", "')'", "'['",
+  "']'", "$accept", "program", "clase", "clasa", "corpclasa", "corp",
+  "declarariClass", "listedeclClass", "listadeclClass", "declClass",
+  "initc", "functii", "functie", "listaparam", "param", "declarariFunct",
+  "listedeclFunct", "listadeclFunct", "declFunct", "initf", "blocFunct",
+  "instrFunct", "declaratii", "listedeclaratie", "listadeclaratie",
+  "declaratie", "init", "instructiuni", "bloc", "instructiune", "instrIF",
+  "listaexprIF", "expresieIF", "instrWHILE", "listaexprWHILE",
+  "expresieWHILE", "expresie", YY_NULLPTR
 };
 #endif
 
@@ -546,15 +562,16 @@ static const yytype_uint16 yytoknum[] =
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
      275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
-     285,   286,   287,   288,   289,   290,    43,    45,    42,    47,
-      59,    44,    62,    91,    93,    40,    41,   123,   125
+     285,   286,   287,   288,   289,   290,   291,   292,   293,    43,
+      45,    42,    47,   294,   123,   125,    59,    58,    44,    62,
+      40,    41,    91,    93
 };
 # endif
 
-#define YYPACT_NINF -37
+#define YYPACT_NINF -120
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-37)))
+  (!!((Yystate) == (-120)))
 
 #define YYTABLE_NINF -1
 
@@ -563,20 +580,30 @@ static const yytype_uint16 yytoknum[] =
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
-static const yytype_int8 yypact[] =
+static const yytype_int16 yypact[] =
 {
-       9,    -4,    14,     7,   -21,     8,   -37,    20,     2,   -37,
-     -37,    -8,    38,   -37,    46,   -37,    -9,     8,    16,   -26,
-      47,    18,    53,    79,    46,    59,    60,    -1,   -37,    10,
-      61,    96,    -3,    62,    64,    65,    66,    -3,   -37,   -37,
-     -37,   -37,   -37,   -37,   -37,   -37,   -37,    63,    67,    -3,
-      68,   -37,   -37,    69,     0,    39,   -37,   -37,   -37,   -37,
-      70,     3,    44,    71,    74,    19,    73,    80,    -3,    -3,
-      -3,    -3,    -3,    -3,    -3,    -3,    -3,    -3,    88,    -3,
-      -3,    -3,    -3,    -3,    -3,   -37,   -37,   -37,    76,    72,
-     -37,   -37,    58,    58,    58,    58,   -11,   -11,   -37,   -37,
-      75,   -37,   -37,    58,    58,    58,    58,    -3,    46,    46,
-      50,    77,    78,   -37,    89,   -37,    81,    46,    82,   -37
+      13,    10,    35,     2,  -120,    32,  -120,    30,  -120,    29,
+    -120,    77,   123,   131,  -120,     1,    71,    97,    98,     5,
+    -120,   138,    26,  -120,   145,   140,   109,  -120,  -120,   147,
+     147,   113,  -120,  -120,   123,   116,   120,   114,  -120,    58,
+    -120,   154,   147,  -120,   147,  -120,  -120,   115,   117,   145,
+     118,   -29,   119,   121,   122,   148,    58,   124,   127,   157,
+    -120,   160,    21,  -120,    73,   125,   170,     0,     0,     0,
+    -120,  -120,  -120,  -120,   136,   129,   132,   135,  -120,  -120,
+    -120,  -120,  -120,   130,   133,     0,   134,  -120,  -120,    61,
+     137,    84,    43,   139,    94,    65,   142,   157,  -120,   171,
+     143,   146,    74,   153,     0,     0,     0,     0,   149,   152,
+       0,     0,     0,     0,     0,     0,   151,     0,     0,     0,
+       0,     0,     0,     9,   150,   178,    56,  -120,  -120,  -120,
+    -120,   155,    80,    80,  -120,  -120,  -120,   156,  -120,  -120,
+     110,   110,   110,   110,   158,  -120,  -120,   110,   110,   110,
+     110,  -120,  -120,  -120,  -120,  -120,   186,   159,   -24,    22,
+    -120,    -2,  -120,   161,   162,     0,    58,    58,   163,    15,
+    -120,    90,   164,   181,   165,   166,   168,   169,  -120,  -120,
+    -120,    85,   172,   173,   167,  -120,   186,   174,   175,     0,
+     144,  -120,  -120,  -120,  -120,  -120,   176,  -120,    54,  -120,
+     177,   182,    93,   179,   180,  -120,  -120,  -120,  -120,  -120,
+    -120,  -120,   183,    58,     0,   184,   101,  -120,  -120
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -584,32 +611,46 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     0,     0,     0,     0,     0,     1,     0,     0,     2,
-       3,     8,     5,     7,     0,     4,     0,     0,     0,     0,
-       0,     0,     0,     0,    15,     0,     0,     0,     6,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,    14,    16,
-      21,    22,    10,    12,    13,    11,     9,     0,     0,     0,
-       0,    49,    48,     0,    31,     0,    24,    23,    26,    25,
-       0,    39,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     3,     0,     1,     0,     4,     0,
+      20,     0,     0,     0,    21,     0,     0,     0,     0,     0,
+       6,     0,     0,    24,     0,     0,     0,     2,    47,     0,
+       0,     0,     7,    25,     0,     0,    52,    49,    51,     0,
+      48,     0,     9,    10,     8,     5,    23,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,    59,     0,     0,     0,
+      11,     0,     0,    50,     0,     0,     0,     0,     0,     0,
+      58,    60,    65,    66,    15,    12,     0,     0,    54,    56,
+      57,    55,    53,     0,     0,     0,     0,    90,    89,     0,
+       0,    72,     0,     0,    80,     0,     0,     0,    14,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,    19,    20,    17,     0,     0,
-      29,    30,    32,    34,    33,    35,    44,    45,    46,    47,
-       0,    37,    38,    40,    42,    41,    43,     0,     0,     0,
-       0,     0,     0,    18,    27,    36,     0,     0,     0,    28
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,    26,    63,    64,
+      61,     0,    85,    86,    87,    88,    67,     0,    70,    71,
+      73,    75,    74,    76,     0,    78,    79,    81,    83,    82,
+      84,    17,    19,    18,    16,    13,     0,     0,     0,     0,
+      27,     0,    36,     0,     0,     0,     0,     0,    31,     0,
+      30,     0,     0,     0,     0,     0,     0,     0,    37,    42,
+      43,     0,     0,     0,     0,    28,     0,     0,     0,     0,
+       0,    45,    44,    46,    22,    62,    68,    77,     0,    29,
+       0,     0,     0,     0,     0,    33,    35,    34,    32,    40,
+      41,    38,     0,     0,     0,     0,     0,    69,    39
 };
 
   /* YYPGOTO[NTERM-NUM].  */
-static const yytype_int8 yypgoto[] =
+static const yytype_int16 yypgoto[] =
 {
-     -37,   -37,   -37,   117,   -37,   104,    97,   -37,   -24,   -37,
-     -37,   -16,   -37,   -37,    -7,   -37,   -36
+    -120,  -120,  -120,   196,  -120,   187,   190,    44,  -120,   104,
+    -120,  -120,   201,  -120,   188,  -120,    79,  -120,    41,  -120,
+    -120,    60,  -120,   215,  -120,   185,   189,  -120,   -56,  -120,
+    -119,    18,  -120,  -117,    19,  -120,   -66
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
-static const yytype_int8 yydefgoto[] =
+static const yytype_int16 yydefgoto[] =
 {
-      -1,     2,     3,     4,    12,    13,    52,     9,    23,    24,
-      25,    53,    54,    26,    60,    61,    55
+      -1,     2,     3,     4,    19,    20,    42,    43,    75,    76,
+     154,     9,    10,    22,    23,   126,   127,   169,   170,   208,
+     161,   162,    15,    16,    37,    38,    88,    27,    55,    56,
+      57,    90,    91,    58,    93,    94,    92
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -617,76 +658,120 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-      39,    62,    42,     5,    42,    51,    43,    44,    43,    44,
-       1,    30,     1,    65,     6,    47,    11,    31,    48,    10,
-       7,    68,    69,    33,    79,    80,    34,    76,    77,    16,
-      45,    14,    45,    27,    92,    93,    94,    95,    96,    97,
-      98,    99,    15,    62,    62,   103,   104,   105,   106,    35,
-      18,    36,    90,    91,    19,    74,    75,    76,    77,    87,
-      20,    29,    70,    71,    72,    73,    21,    81,    82,    83,
-      84,   110,   101,   102,    22,    74,    75,    76,    77,    17,
-      74,    75,    76,    77,   111,   112,    74,    75,    76,    77,
-     113,    38,    32,   118,    74,    75,    76,    77,    37,    40,
-      41,    50,    56,    49,    57,    58,    59,    89,   116,    63,
-      88,    85,    66,    64,    86,    67,    78,   100,   107,   108,
-       8,    28,   109,     0,    46,   114,   115,     0,   117,     0,
-     119
+      71,    89,   157,    95,    13,    78,   158,   163,    87,   164,
+       7,    65,    79,    80,   151,    53,   172,    25,     5,   102,
+       1,   159,   152,    66,    17,    18,    78,   174,   173,    54,
+     175,     1,    13,    79,    80,     6,    81,     7,   132,   133,
+     134,   135,   163,   177,   164,   153,   140,   141,   142,   143,
+      31,    95,    95,   147,   148,   149,   150,    81,   176,   205,
+     157,   185,    50,   186,   158,   125,    51,   206,    52,   112,
+     113,   114,   115,    53,    34,    53,    11,    35,    83,   159,
+      12,    84,   104,   105,   106,   107,    60,    54,    60,    54,
+     207,   119,   120,   121,   122,   187,    17,    18,   188,   181,
+     104,   105,   106,   107,   104,   105,   106,   107,   110,   111,
+     182,   183,   108,   104,   105,   106,   107,    28,   117,   118,
+     130,   106,   107,   202,   104,   105,   106,   107,   138,   139,
+      21,   195,   104,   105,   106,   107,   145,   146,    24,   211,
+     104,   105,   106,   107,    29,    30,    33,   218,   216,   104,
+     105,   106,   107,    36,    39,    40,    47,   215,    41,    45,
+      48,    59,    49,    70,    61,    74,    62,    77,    64,    67,
+      72,    68,    69,    73,    85,    86,    96,    97,    98,    99,
+     125,   100,   137,   144,   101,   156,   190,   103,   109,   128,
+     116,   123,   129,   131,   168,   136,   155,   203,   204,     8,
+     166,   124,   167,   184,   165,   160,    32,   179,   180,   171,
+      14,   191,   192,   189,   193,   194,   198,   196,   197,   212,
+      44,   178,    46,   209,   213,   200,   201,   199,   210,   217,
+      26,     0,   214,     0,    63,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,    82
 };
 
-static const yytype_int8 yycheck[] =
+static const yytype_int16 yycheck[] =
 {
-      24,    37,     5,     7,     5,     8,     9,    10,     9,    10,
-       3,    37,     3,    49,     0,     5,     8,    43,     8,    40,
-      13,    21,    22,     5,    21,    22,     8,    38,    39,    37,
-      33,    11,    33,    42,    70,    71,    72,    73,    74,    75,
-      76,    77,    40,    79,    80,    81,    82,    83,    84,    31,
-       4,    33,    68,    69,     8,    36,    37,    38,    39,    40,
-      14,    45,    23,    24,    25,    26,    20,    23,    24,    25,
-      26,   107,    79,    80,    28,    36,    37,    38,    39,    41,
-      36,    37,    38,    39,   108,   109,    36,    37,    38,    39,
-      40,    12,    45,   117,    36,    37,    38,    39,    45,    40,
-      40,     5,    40,    42,    40,    40,    40,    27,    19,    46,
-      37,    40,    44,    46,    40,    46,    46,    29,    42,    47,
-       3,    17,    47,    -1,    27,    48,    48,    -1,    47,    -1,
-      48
+      56,    67,     4,    69,     3,     5,     8,   126,     8,   126,
+       8,    40,    12,    13,     5,    17,    40,    16,     8,    85,
+      18,    23,    13,    52,    19,    20,     5,     5,    52,    31,
+       8,    18,     3,    12,    13,     0,    36,     8,   104,   105,
+     106,   107,   161,    45,   161,    36,   112,   113,   114,   115,
+      45,   117,   118,   119,   120,   121,   122,    36,    36,     5,
+       4,    46,     4,    48,     8,     9,     8,    13,    10,    26,
+      27,    28,    29,    17,    48,    17,    44,    51,     5,    23,
+      50,     8,    39,    40,    41,    42,    42,    31,    44,    31,
+      36,    26,    27,    28,    29,     5,    19,    20,     8,   165,
+      39,    40,    41,    42,    39,    40,    41,    42,    24,    25,
+     166,   167,    51,    39,    40,    41,    42,    46,    24,    25,
+      46,    41,    42,   189,    39,    40,    41,    42,   110,   111,
+       7,    46,    39,    40,    41,    42,   117,   118,     7,    46,
+      39,    40,    41,    42,    47,    47,     8,    46,   214,    39,
+      40,    41,    42,     8,    14,    46,    40,   213,    11,    46,
+      40,     7,    48,    15,    49,     8,    49,     7,    50,    50,
+      46,    50,    50,    46,    49,     5,    40,    48,    46,    44,
+       9,    51,    30,    32,    51,     7,     5,    53,    51,    46,
+      51,    49,    46,    40,     8,    46,    46,    53,    22,     3,
+      44,    97,    44,    40,    49,   126,    19,    46,    46,    50,
+       9,    46,    46,    49,    46,    46,    49,    45,    45,    40,
+      30,   161,    34,    46,    44,    51,    51,   186,    46,    45,
+      15,    -1,    49,    -1,    49,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    62
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,    50,    51,    52,     7,     0,    13,    52,    56,
-      40,     8,    53,    54,    11,    40,    37,    41,     4,     8,
-      14,    20,    28,    57,    58,    59,    62,    42,    54,    45,
-      37,    43,    45,     5,     8,    31,    33,    45,    12,    57,
-      40,    40,     5,     9,    10,    33,    55,     5,     8,    42,
-       5,     8,    55,    60,    61,    65,    40,    40,    40,    40,
-      63,    64,    65,    46,    46,    65,    44,    46,    21,    22,
-      23,    24,    25,    26,    36,    37,    38,    39,    46,    21,
-      22,    23,    24,    25,    26,    40,    40,    40,    37,    27,
-      60,    60,    65,    65,    65,    65,    65,    65,    65,    65,
-      29,    63,    63,    65,    65,    65,    65,    42,    47,    47,
-      65,    57,    57,    40,    48,    48,    19,    47,    57,    48
+       0,    18,    55,    56,    57,     8,     0,     8,    57,    65,
+      66,    44,    50,     3,    66,    76,    77,    19,    20,    58,
+      59,     7,    67,    68,     7,    16,    77,    81,    46,    47,
+      47,    45,    59,     8,    48,    51,     8,    78,    79,    14,
+      46,    11,    60,    61,    60,    46,    68,    40,    40,    48,
+       4,     8,    10,    17,    31,    82,    83,    84,    87,     7,
+      61,    49,    49,    79,    50,    40,    52,    50,    50,    50,
+      15,    82,    46,    46,     8,    62,    63,     7,     5,    12,
+      13,    36,    80,     5,     8,    49,     5,     8,    80,    90,
+      85,    86,    90,    88,    89,    90,    40,    48,    46,    44,
+      51,    51,    90,    53,    39,    40,    41,    42,    51,    51,
+      24,    25,    26,    27,    28,    29,    51,    24,    25,    26,
+      27,    28,    29,    49,    63,     9,    69,    70,    46,    46,
+      46,    40,    90,    90,    90,    90,    46,    30,    85,    85,
+      90,    90,    90,    90,    32,    88,    88,    90,    90,    90,
+      90,     5,    13,    36,    64,    46,     7,     4,     8,    23,
+      70,    74,    75,    84,    87,    49,    44,    44,     8,    71,
+      72,    50,    40,    52,     5,     8,    36,    45,    75,    46,
+      46,    90,    82,    82,    40,    46,    48,     5,     8,    49,
+       5,    46,    46,    46,    46,    46,    45,    45,    49,    72,
+      51,    51,    90,    53,    22,     5,    13,    36,    73,    46,
+      46,    46,    40,    44,    49,    82,    90,    45,    46
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    49,    50,    51,    51,    52,    53,    53,    54,    54,
-      55,    55,    55,    55,    56,    57,    57,    58,    58,    58,
-      58,    58,    58,    58,    58,    58,    58,    59,    59,    60,
-      60,    60,    61,    61,    61,    61,    62,    63,    63,    63,
-      64,    64,    64,    64,    65,    65,    65,    65,    65,    65
+       0,    54,    55,    56,    56,    57,    58,    58,    59,    59,
+      60,    60,    61,    62,    62,    63,    63,    64,    64,    64,
+      65,    65,    66,    67,    67,    68,    69,    69,    70,    71,
+      71,    72,    72,    73,    73,    73,    74,    74,    75,    75,
+      75,    75,    75,    75,    75,    75,    75,    76,    76,    77,
+      78,    78,    79,    79,    80,    80,    80,    80,    81,    82,
+      82,    83,    83,    83,    83,    83,    83,    83,    84,    84,
+      85,    85,    85,    86,    86,    86,    86,    87,    88,    88,
+      88,    89,    89,    89,    89,    90,    90,    90,    90,    90,
+      90
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     2,     2,     3,     3,     3,     1,     1,     4,
-       1,     1,     1,     1,     4,     1,     2,     5,     8,     5,
-       5,     2,     2,     3,     3,     3,     3,     8,    12,     3,
-       3,     1,     3,     3,     3,     3,     8,     3,     3,     1,
-       3,     3,     3,     3,     3,     3,     3,     3,     1,     1
+       0,     2,     4,     1,     2,     6,     1,     2,     3,     3,
+       1,     2,     3,     4,     2,     1,     4,     1,     1,     1,
+       1,     2,    12,     3,     1,     2,     1,     2,     4,     3,
+       1,     1,     4,     1,     1,     1,     1,     2,     5,     8,
+       5,     5,     2,     2,     3,     3,     3,     2,     3,     3,
+       3,     1,     1,     4,     1,     1,     1,     1,     4,     1,
+       2,     5,     8,     5,     5,     2,     2,     5,     8,    12,
+       3,     3,     1,     3,     3,     3,     3,     8,     3,     3,
+       1,     3,     3,     3,     3,     3,     3,     3,     3,     1,
+       1
 };
 
 
@@ -1362,22 +1447,71 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 5:
-#line 49 "elfac.y" /* yacc.c:1646  */
-    { 
-                     atribuiretiplist((yyvsp[0].varvector), (yyvsp[-1].valSTRING), nrdecl, "global"); 
-                     adaugarelist((yyvsp[0].varvector), nrdecl);                    
-                 }
-#line 1372 "y.tab.c" /* yacc.c:1646  */
+        case 22:
+#line 86 "elfac.y" /* yacc.c:1646  */
+    {
+           if (programfuncts[nrfunctii] == NULL)
+           {
+             programfuncts[nrfunctii] = (struct funct*)malloc(sizeof(struct funct));
+           }
+           programfuncts[nrfunctii]->nume = (char*)malloc(128);
+           strcpy(programfuncts[nrfunctii]->nume, (yyvsp[-11].valSTRING)); 
+           programfuncts[nrfunctii]->freturn = (char*)malloc(128);
+           strcpy(programfuncts[nrfunctii]->freturn, (yyvsp[-5].valSTRING));
+           nrfunctii++;
+         }
+#line 1464 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 6:
-#line 56 "elfac.y" /* yacc.c:1646  */
+  case 23:
+#line 100 "elfac.y" /* yacc.c:1646  */
+    {
+              adaugarevarlist((yyvsp[0].variabila));
+              printf("%s %s, %d %f %s %s\n", (yyvsp[0].variabila)->nume, (yyvsp[0].variabila)->tip, (yyvsp[0].variabila)->valint, (yyvsp[0].variabila)->valfloat, (yyvsp[0].variabila)->valstring, (yyvsp[0].variabila)->varscope);
+            }
+#line 1473 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 24:
+#line 105 "elfac.y" /* yacc.c:1646  */
+    {
+              adaugarevarlist((yyvsp[0].variabila));
+              printf("%s %s, %d %f %s %s\n", (yyvsp[0].variabila)->nume, (yyvsp[0].variabila)->tip, (yyvsp[0].variabila)->valint, (yyvsp[0].variabila)->valfloat, (yyvsp[0].variabila)->valstring, (yyvsp[0].variabila)->varscope);
+            }
+#line 1482 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 25:
+#line 112 "elfac.y" /* yacc.c:1646  */
+    {
+         (yyval.variabila) = (struct var*)malloc(sizeof(struct var));
+         (yyval.variabila)->nume = (char*)malloc(128);
+         strcpy((yyval.variabila)->nume, (yyvsp[0].valSTRING));
+         (yyval.variabila)->varscope = (char*)malloc(128);
+         strcpy((yyval.variabila)->varscope, "functie");
+         (yyval.variabila)->tip = (char*)malloc(128);
+         strcpy((yyval.variabila)->tip, (yyvsp[-1].valSTRING));
+       }
+#line 1496 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 28:
+#line 128 "elfac.y" /* yacc.c:1646  */
+    {
+                  atribuiretiplist((yyvsp[-1].varvector), (yyvsp[-2].valSTRING), nrdecl, "functie"); 
+                  adaugarelist((yyvsp[-1].varvector), nrdecl);
+                }
+#line 1505 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 29:
+#line 135 "elfac.y" /* yacc.c:1646  */
     {
                      
-                     if (verifdeclvar((yyvsp[0].variabila), "global") == 1) 
+                     
+                     if (verifdeclvar((yyvsp[0].variabila), "functie") != -1) 
                      {  
-                          printf("Variabila : %s a fost deja declarata\n", (yyvsp[0].variabila)->nume);
+                          yyerror("Variabila a fost deja declarata\n");
                           fflush(stdout);
                           (yyval.varvector) = (yyvsp[-2].varvector);
                      }    
@@ -1385,42 +1519,174 @@ yyreduce:
                      {
                           (yyval.varvector) = curentlistdecl((yyvsp[-2].varvector), (yyvsp[0].variabila), nrdecl++);
                      }
-                 }
-#line 1390 "y.tab.c" /* yacc.c:1646  */
+                 
+                   }
+#line 1525 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 7:
-#line 70 "elfac.y" /* yacc.c:1646  */
-    { 
+  case 30:
+#line 151 "elfac.y" /* yacc.c:1646  */
+    {
                      nrdecl = 0;
-                     if (verifdeclvar((yyvsp[0].variabila), "global") == 1) 
+                     if (verifdeclvar((yyvsp[0].variabila), "functie") != -1) 
                      {  
                           printf("Variabila : %s a fost deja declarata\n", (yyvsp[0].variabila)->nume);
                           fflush(stdout);
                      }
                      else
                      {      
-                       printf("%s %s, %d %f %s\n", (yyvsp[0].variabila)->nume, (yyvsp[0].variabila)->tip, (yyvsp[0].variabila)->valint, (yyvsp[0].variabila)->valfloat, (yyvsp[0].variabila)->valstring);
-                            (yyval.varvector) = curentlistdecl (NULL, (yyvsp[0].variabila), nrdecl++);
+                        printf("%s %s, %d %f %s %s\n", (yyvsp[0].variabila)->nume, (yyvsp[0].variabila)->tip, (yyvsp[0].variabila)->valint, (yyvsp[0].variabila)->valfloat, (yyvsp[0].variabila)->valstring, (yyvsp[0].variabila)->varscope);
+                        (yyval.varvector) = curentlistdecl (NULL, (yyvsp[0].variabila), nrdecl++);
+                            
+                     }
+                   }
+#line 1544 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 31:
+#line 168 "elfac.y" /* yacc.c:1646  */
+    {
+             (yyval.variabila) = (struct var*)malloc(sizeof(struct var));
+             (yyval.variabila)->nume = (char*)malloc(128);
+             strcpy((yyval.variabila)->nume, (yyvsp[0].valSTRING));
+             (yyval.variabila)->varscope = (char*)malloc(128);
+             strcpy((yyval.variabila)->varscope, "functie");
+           }
+#line 1556 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 32:
+#line 176 "elfac.y" /* yacc.c:1646  */
+    {
+              (yyval.variabila) = (struct var*)malloc(sizeof(struct var));
+              (yyval.variabila)->nume = (char*)malloc(128);
+              (yyval.variabila)->tip = (char*)malloc(128);
+              if (strcmp((yyvsp[0].valoare)->tip, "float") == 0)
+              {
+                strcpy((yyval.variabila)->nume, (yyvsp[-3].valSTRING));
+                (yyval.variabila)->valfloat = (yyvsp[0].valoare)->valfloat;
+              }
+              if (strcmp((yyvsp[0].valoare)->tip, "int") == 0)
+              {
+                strcpy((yyval.variabila)->nume, (yyvsp[-3].valSTRING));
+                (yyval.variabila)->valint = (yyvsp[0].valoare)->valint;
+              }
+              if (strcmp((yyvsp[0].valoare)->tip, "char") == 0)
+              {
+                strcpy((yyval.variabila)->nume, (yyvsp[-3].valSTRING));
+                (yyval.variabila)->valchar = (yyvsp[0].valoare)->valchar;
+              }
+              if (strcmp((yyvsp[0].valoare)->tip, "string") == 0)
+              {
+                strcpy((yyval.variabila)->nume, (yyvsp[-3].valSTRING));
+                (yyval.variabila)->valstring = (char *)malloc(128);
+                strcpy((yyval.variabila)->valstring, (yyvsp[0].valoare)->valstring);
+              }
+                strcpy((yyval.variabila)->tip, (yyvsp[0].valoare)->tip);
+                (yyval.variabila)->varscope = (char*)malloc(128);
+                strcpy((yyval.variabila)->varscope, "functie");
+           }
+#line 1590 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 33:
+#line 208 "elfac.y" /* yacc.c:1646  */
+    { 
+         (yyval.valoare) = (struct varval*)malloc(sizeof(struct varval));
+         (yyval.valoare)->tip = (char*)malloc(128);
+         strcpy((yyval.valoare)->tip, "int");
+         (yyval.valoare)->valint = (yyvsp[0].valINT);   
+       }
+#line 1601 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 34:
+#line 215 "elfac.y" /* yacc.c:1646  */
+    {
+          (yyval.valoare) = (struct varval*)malloc(sizeof(struct varval));
+          (yyval.valoare)->tip = (char*)malloc(128);
+          strcpy((yyval.valoare)->tip, "float");
+          (yyval.valoare)->valfloat = (yyvsp[0].valFLOAT);      
+       }
+#line 1612 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 35:
+#line 222 "elfac.y" /* yacc.c:1646  */
+    {
+           (yyval.valoare) = (struct varval*)malloc(sizeof(struct varval));
+           (yyval.valoare)->tip = (char*)malloc(128);
+           (yyval.valoare)->valstring = (char*)malloc(128);
+           strcpy((yyval.valoare)->tip, "string");
+           strcpy((yyval.valoare)->valstring, (yyvsp[0].valSTRING));
+       }
+#line 1624 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 49:
+#line 253 "elfac.y" /* yacc.c:1646  */
+    { 
+                     
+                     atribuiretiplist((yyvsp[0].varvector), (yyvsp[-1].valSTRING), nrdecl, "global"); 
+                     adaugarelist((yyvsp[0].varvector), nrdecl);                  
+                 }
+#line 1634 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 50:
+#line 261 "elfac.y" /* yacc.c:1646  */
+    {
+                     
+                     if (verifdeclvar((yyvsp[0].variabila), "global") != -1) 
+                     {  
+                          yyerror("Variabila a fost deja declarata\n");
+                          fflush(stdout);
+                          (yyval.varvector) = (yyvsp[-2].varvector);
+                     }    
+                     else
+                     {
+                          (yyval.varvector) = curentlistdecl((yyvsp[-2].varvector), (yyvsp[0].variabila), nrdecl++);
+                          printf("%s %s, %d %f %s %s\n", (yyvsp[0].variabila)->nume, (yyvsp[0].variabila)->tip, (yyvsp[0].variabila)->valint, (yyvsp[0].variabila)->valfloat, (yyvsp[0].variabila)->valstring, (yyvsp[0].variabila)->varscope);
+                     }
+                 }
+#line 1653 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 51:
+#line 276 "elfac.y" /* yacc.c:1646  */
+    { 
+                     nrdecl = 0;
+                     if (verifdeclvar((yyvsp[0].variabila), "global") != -1) 
+                     {  
+                          yyerror("Variabila a fost deja declarata\n");
+                          fflush(stdout);
+                     }
+                     else
+                     {      
+                        printf("%s %s, %d %f %s %s\n", (yyvsp[0].variabila)->nume, (yyvsp[0].variabila)->tip, (yyvsp[0].variabila)->valint, (yyvsp[0].variabila)->valfloat, (yyvsp[0].variabila)->valstring, (yyvsp[0].variabila)->varscope);
+                        (yyval.varvector) = curentlistdecl (NULL, (yyvsp[0].variabila), nrdecl++);
                             
                      }
                  }
-#line 1409 "y.tab.c" /* yacc.c:1646  */
+#line 1672 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 8:
-#line 87 "elfac.y" /* yacc.c:1646  */
+  case 52:
+#line 293 "elfac.y" /* yacc.c:1646  */
     { 
               
               (yyval.variabila) = (struct var*)malloc(sizeof(struct var));
               (yyval.variabila)->nume = (char*)malloc(128);
               strcpy((yyval.variabila)->nume, (yyvsp[0].valSTRING));
+              (yyval.variabila)->varscope = (char*)malloc(128);
+              strcpy((yyval.variabila)->varscope, "global");
+
             }
-#line 1420 "y.tab.c" /* yacc.c:1646  */
+#line 1686 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 9:
-#line 94 "elfac.y" /* yacc.c:1646  */
+  case 53:
+#line 303 "elfac.y" /* yacc.c:1646  */
     { 
               (yyval.variabila) = (struct var*)malloc(sizeof(struct var));
               (yyval.variabila)->nume = (char*)malloc(128);
@@ -1447,45 +1713,47 @@ yyreduce:
                 strcpy((yyval.variabila)->valstring, (yyvsp[0].valoare)->valstring);
               }
                 strcpy((yyval.variabila)->tip, (yyvsp[0].valoare)->tip);
+                (yyval.variabila)->varscope = (char*)malloc(128);
+                strcpy((yyval.variabila)->varscope, "global");
               }
-#line 1452 "y.tab.c" /* yacc.c:1646  */
+#line 1720 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 10:
-#line 125 "elfac.y" /* yacc.c:1646  */
+  case 54:
+#line 336 "elfac.y" /* yacc.c:1646  */
     { 
         (yyval.valoare) = (struct varval*)malloc(sizeof(struct varval));
         (yyval.valoare)->tip = (char*)malloc(128);
         strcpy((yyval.valoare)->tip, "int");
         (yyval.valoare)->valint = (yyvsp[0].valINT);   
         }
-#line 1463 "y.tab.c" /* yacc.c:1646  */
+#line 1731 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 11:
-#line 132 "elfac.y" /* yacc.c:1646  */
+  case 55:
+#line 343 "elfac.y" /* yacc.c:1646  */
     {
           (yyval.valoare) = (struct varval*)malloc(sizeof(struct varval));
           (yyval.valoare)->tip = (char*)malloc(128);
           strcpy((yyval.valoare)->tip, "float");
           (yyval.valoare)->valfloat = (yyvsp[0].valFLOAT);
         }
-#line 1474 "y.tab.c" /* yacc.c:1646  */
+#line 1742 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 12:
-#line 139 "elfac.y" /* yacc.c:1646  */
+  case 56:
+#line 350 "elfac.y" /* yacc.c:1646  */
     {
           (yyval.valoare) = (struct varval*)malloc(sizeof(struct varval));
           (yyval.valoare)->tip = (char*)malloc(128);
           strcpy((yyval.valoare)->tip, "char");
           (yyval.valoare)->valchar = (yyvsp[0].valCHAR);
         }
-#line 1485 "y.tab.c" /* yacc.c:1646  */
+#line 1753 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 13:
-#line 146 "elfac.y" /* yacc.c:1646  */
+  case 57:
+#line 357 "elfac.y" /* yacc.c:1646  */
     {
            (yyval.valoare) = (struct varval*)malloc(sizeof(struct varval));
            (yyval.valoare)->tip = (char*)malloc(128);
@@ -1493,284 +1761,363 @@ yyreduce:
            strcpy((yyval.valoare)->tip, "string");
            strcpy((yyval.valoare)->valstring, (yyvsp[0].valSTRING));
         }
-#line 1497 "y.tab.c" /* yacc.c:1646  */
+#line 1765 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 14:
-#line 156 "elfac.y" /* yacc.c:1646  */
-    { for (int i = 0; i < nrvar; i++)
-              {
-                 printf("Variabilele urmatoare au fost declarate: %s \n", programvars[i]->nume);
-                 fflush(stdout);
+  case 61:
+#line 374 "elfac.y" /* yacc.c:1646  */
+    {
+                for (int i = 0; i < nrvar; i++)
+                {
+                  if (strcmp((yyvsp[-4].valSTRING), programvars[i]->nume) == 0)
+                  {
+                    if ((yyvsp[-1].variabila)->varscope != NULL)
+                    {
+                      if (strcmp(programvars[i]->varscope, (yyvsp[-1].variabila)->varscope) == 0)
+                      {
+                        if (strcmp(programvars[i]->tip, (yyvsp[-1].variabila)->tip) == 0)
+                        {
+                          if (strcmp(programvars[i]->tip, "int") == 0)
+                          {
+                            programvars[i]->valint = (yyvsp[-1].variabila)->valint;
+              
+                          }
+                          if (strcmp(programvars[i]->tip, "float") == 0)
+                          {
+                            programvars[i]->valfloat = (yyvsp[-1].variabila)->valfloat;
+                          }
+                          if (strcmp(programvars[i]->tip, "strcpy") == 0)
+                          {
+                            strcpy(programvars[i]->valstring, (yyvsp[-1].variabila)->valstring);
+                          }
+                        }
+                        else
+                        {
+                          yyerror("Nu se pot efectua operatii intre variabile de tipuri diferite\n");
+                        }
+                      }
+                      else
+                      {
+                        yyerror("Nu se pot efectua operatii intre variabile de scope-uri diferite\n");
+                      }
+                    }
+                  }
+                }
               }
+#line 1808 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 67:
+#line 418 "elfac.y" /* yacc.c:1646  */
+    {
+              if (strcmp((yyvsp[-2].variabila)->tip, "int") == 0)
+              {
+                printf("Eval = %d , de tip int\n", (yyvsp[-2].variabila)->valint);
+              } 
+              if (strcmp((yyvsp[-2].variabila)->tip, "float") == 0)
+              {
+                printf("Eval = %f , de tip float\n", (yyvsp[-2].variabila)->valfloat);
+              } 
+              if (strcmp((yyvsp[-2].variabila)->tip, "string") == 0)
+              {
+                printf("Eval = %s , de tip string\n", (yyvsp[-2].variabila)->valstring);
+              } 
             }
-#line 1508 "y.tab.c" /* yacc.c:1646  */
+#line 1827 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 27:
-#line 181 "elfac.y" /* yacc.c:1646  */
+  case 85:
+#line 464 "elfac.y" /* yacc.c:1646  */
     {
-          printf("linia %d merge\n", yylineno);
-             fflush(stdout);
-        }
-#line 1517 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 39:
-#line 204 "elfac.y" /* yacc.c:1646  */
-    { printf("gata aici\n"); }
-#line 1523 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 40:
-#line 207 "elfac.y" /* yacc.c:1646  */
-    { printf("gata si aici\n"); }
-#line 1529 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 44:
-#line 214 "elfac.y" /* yacc.c:1646  */
-    {
-             printf("linia %d merge\n", yylineno);
-             fflush(stdout);
-            
-             printf("linia %d merge\n", yylineno);
-             fflush(stdout);
-             if (((strcmp((yyvsp[-2].valoare)->tip, "int") == 0 || strcmp((yyvsp[-2].valoare)->tip, "string") == 0) && (strcmp((yyvsp[0].valoare)->tip, "string") == 0 || strcmp((yyvsp[0].valoare)->tip, "char") == 0))
-                 || ((strcmp((yyvsp[0].valoare)->tip, "int") == 0 || strcmp((yyvsp[0].valoare)->tip, "string") == 0) && (strcmp((yyvsp[-2].valoare)->tip, "string") == 0 && strcmp((yyvsp[-2].valoare)->tip, "char") == 0)))
+            if (((yyvsp[-2].variabila)->varscope != NULL && (yyvsp[0].variabila)->varscope == NULL) || ((yyvsp[-2].variabila)->varscope == NULL && (yyvsp[0].variabila)->varscope != NULL) || ((yyvsp[-2].variabila)->varscope == NULL && (yyvsp[0].variabila)->varscope == NULL) || ((yyvsp[-2].variabila)->varscope != NULL && (yyvsp[0].variabila)->varscope != NULL && strcmp((yyvsp[-2].variabila)->varscope, (yyvsp[0].variabila)->varscope) == 0))  
+            { 
+              if (((strcmp((yyvsp[-2].variabila)->tip, "int") == 0 || strcmp((yyvsp[-2].variabila)->tip, "string") == 0) && (strcmp((yyvsp[0].variabila)->tip, "string") == 0 || strcmp((yyvsp[0].variabila)->tip, "char") == 0))
+                 || ((strcmp((yyvsp[0].variabila)->tip, "int") == 0 || strcmp((yyvsp[0].variabila)->tip, "string") == 0) && (strcmp((yyvsp[-2].variabila)->tip, "string") == 0 && strcmp((yyvsp[-2].variabila)->tip, "char") == 0)))
              {
-               printf("linia %d merge\n", yylineno);
+               
+               yyerror("Nu se pot efectua operatii cu 2 tipuri diferite\n");
                fflush(stdout);
-               printf("Nu se pot efectua operatii cu 2 tipuri diferite\n");
-               fflush(stdout);
-               free((yyval.valoare));
+               free((yyval.variabila));
              } 
              else
              {
-                            printf("linia %d merge\n", yylineno);
-             fflush(stdout);
-               if ((strcmp((yyvsp[-2].valoare)->tip, "int") == 0 && strcmp((yyvsp[0].valoare)->tip, "float") == 0) || (strcmp((yyvsp[-2].valoare)->tip, "float") == 0 && strcmp((yyvsp[0].valoare)->tip, "int") == 0))
+               if ((strcmp((yyvsp[-2].variabila)->tip, "int") == 0 && strcmp((yyvsp[0].variabila)->tip, "float") == 0) || (strcmp((yyvsp[-2].variabila)->tip, "float") == 0 && strcmp((yyvsp[0].variabila)->tip, "int") == 0))
                {
-                 strcpy((yyval.valoare)->tip, "float");
+                 strcpy((yyval.variabila)->tip, "float");
                }
-               if (strcmp((yyvsp[-2].valoare)->tip, (yyvsp[0].valoare)->tip) == 0)
+               if (strcmp((yyvsp[-2].variabila)->tip, (yyvsp[0].variabila)->tip) == 0)
                {
-                 strcpy((yyval.valoare)->tip, (yyvsp[-2].valoare)->tip);
+                 strcpy((yyval.variabila)->tip, (yyvsp[-2].variabila)->tip);
                }
-               if (strcmp((yyval.valoare)->tip, "int") == 0)
+               if (strcmp((yyval.variabila)->tip, "int") == 0)
                {
-                 (yyval.valoare)->valint = (yyvsp[-2].valoare)->valint + (yyvsp[0].valoare)->valint;
+                 
+                 (yyval.variabila)->valint = (yyvsp[-2].variabila)->valint + (yyvsp[0].variabila)->valint;
                }
-               if (strcmp((yyval.valoare)->tip, "float") == 0)
+               if (strcmp((yyval.variabila)->tip, "float") == 0)
                {
-                 if(strcmp((yyvsp[-2].valoare)->tip, "int") == 0)
+                 if(strcmp((yyvsp[-2].variabila)->tip, "int") == 0)
                   {
-                    (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valint + (yyvsp[0].valoare)->valfloat;
+                    (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valint + (yyvsp[0].variabila)->valfloat;
                   }
                   else 
                   {
-                    if(strcmp((yyvsp[0].valoare)->tip, "int") == 0)
+                    if(strcmp((yyvsp[0].variabila)->tip, "int") == 0)
                     {
-                       (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valfloat + (yyvsp[0].valoare)->valint;
+                       (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valfloat + (yyvsp[0].variabila)->valint;
                     } 
                     else
                     {
-                      (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valfloat + (yyvsp[0].valoare)->valfloat;
+                      (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valfloat + (yyvsp[0].variabila)->valfloat;
                     }
                   }   
                }
-               if(strcmp((yyval.valoare)->tip, "string") == 0)
+               if(strcmp((yyval.variabila)->tip, "string") == 0)
                {
-                 (yyval.valoare)->valstring = (char*)malloc(128);
-                 strcpy((yyval.valoare)->valstring, strcat((yyvsp[-2].valoare)->valstring, (yyvsp[0].valoare)->valstring));
+                 (yyval.variabila)->valstring = (char*)malloc(128);
+                 strcpy((yyval.variabila)->valstring, strcat((yyvsp[-2].variabila)->valstring, (yyvsp[0].variabila)->valstring));
                }
-              }
-              printf("linia %d merge\n", yylineno);
-             fflush(stdout);
-          }
-#line 1592 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 45:
-#line 273 "elfac.y" /* yacc.c:1646  */
-    {
-            
-             if (((strcmp((yyvsp[-2].valoare)->tip, "int") == 0 || strcmp((yyvsp[-2].valoare)->tip, "string") == 0) && (strcmp((yyvsp[0].valoare)->tip, "string") == 0 || strcmp((yyvsp[0].valoare)->tip, "char") == 0))
-                 || ((strcmp((yyvsp[0].valoare)->tip, "int") == 0 || strcmp((yyvsp[0].valoare)->tip, "string") == 0) && (strcmp((yyvsp[-2].valoare)->tip, "string") == 0 && strcmp((yyvsp[-2].valoare)->tip, "char") == 0)))
-             {
-               
-               printf("Nu se pot efectua operatii cu 2 tipuri diferite\n");
-               fflush(stdout);
-               free((yyval.valoare));
-             } 
-             else
-             {
-               if ((strcmp((yyvsp[-2].valoare)->tip, "int") == 0 && strcmp((yyvsp[0].valoare)->tip, "float") == 0) || (strcmp((yyvsp[-2].valoare)->tip, "float") == 0 && strcmp((yyvsp[0].valoare)->tip, "int") == 0))
-               {
-                 strcpy((yyval.valoare)->tip, "float");
-               }
-               if (strcmp((yyvsp[-2].valoare)->tip, (yyvsp[0].valoare)->tip) == 0)
-               {
-                 strcpy((yyval.valoare)->tip, (yyvsp[-2].valoare)->tip);
-               }
-               if (strcmp((yyval.valoare)->tip, "int") == 0)
-               {
-                 (yyval.valoare)->valint = (yyvsp[-2].valoare)->valint - (yyvsp[0].valoare)->valint;
-               }
-               if (strcmp((yyval.valoare)->tip, "float") == 0)
-               {
-                 if(strcmp((yyvsp[-2].valoare)->tip, "int") == 0)
-                    (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valint - (yyvsp[0].valoare)->valfloat;
-                 else if(strcmp((yyvsp[0].valoare)->tip, "int") == 0)
-                    (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valfloat - (yyvsp[0].valoare)->valint;
-                 else
-                    (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valfloat - (yyvsp[0].valoare)->valfloat;
-               }
-               if(strcmp((yyval.valoare)->tip, "string") == 0)
-               {
-                 (yyval.valoare)->valstring = (char*)malloc(128);
-                 strcpy((yyval.valoare)->valstring, strcat((yyvsp[-2].valoare)->valstring, (yyvsp[0].valoare)->valstring));
-               }
-              }
-          }
-#line 1637 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 46:
-#line 314 "elfac.y" /* yacc.c:1646  */
-    {
-             
-             if (((strcmp((yyvsp[-2].valoare)->tip, "int") == 0 || strcmp((yyvsp[-2].valoare)->tip, "string") == 0) && (strcmp((yyvsp[0].valoare)->tip, "string") == 0 || strcmp((yyvsp[0].valoare)->tip, "char") == 0))
-                 || ((strcmp((yyvsp[0].valoare)->tip, "int") == 0 || strcmp((yyvsp[0].valoare)->tip, "string") == 0) && (strcmp((yyvsp[-2].valoare)->tip, "string") == 0 && strcmp((yyvsp[-2].valoare)->tip, "char") == 0)))
-             {
-               
-               printf("Nu se pot efectua operatii cu 2 tipuri diferite");
-               fflush(stdout);
-               free((yyval.valoare));
-             } 
-             else
-             {
-               if ((strcmp((yyvsp[-2].valoare)->tip, "int") == 0 && strcmp((yyvsp[0].valoare)->tip, "float") == 0) || (strcmp((yyvsp[-2].valoare)->tip, "float") == 0 && strcmp((yyvsp[0].valoare)->tip, "int") == 0))
-               {
-                 strcpy((yyval.valoare)->tip, "float");
-               }
-               if (strcmp((yyvsp[-2].valoare)->tip, (yyvsp[0].valoare)->tip) == 0)
-               {
-                 strcpy((yyval.valoare)->tip, (yyvsp[-2].valoare)->tip);
-               }
-               if (strcmp((yyval.valoare)->tip, "int") == 0)
-               {
-                 (yyval.valoare)->valint = (yyvsp[-2].valoare)->valint * (yyvsp[0].valoare)->valint;
-               }
-               if (strcmp((yyval.valoare)->tip, "float") == 0)
-               {
-                 if(strcmp((yyvsp[-2].valoare)->tip, "int") == 0)
-                    (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valint * (yyvsp[0].valoare)->valfloat;
-                 else if(strcmp((yyvsp[0].valoare)->tip, "int") == 0)
-                    (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valfloat * (yyvsp[0].valoare)->valint;
-                 else
-                    (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valfloat * (yyvsp[0].valoare)->valfloat;
-               }
-               if(strcmp((yyval.valoare)->tip, "string") == 0)
-               {
-                 (yyval.valoare)->valstring = (char*)malloc(128);
-                 strcpy((yyval.valoare)->valstring, strcat((yyvsp[-2].valoare)->valstring, (yyvsp[0].valoare)->valstring));
-               }
-              }
-          }
-#line 1682 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 47:
-#line 355 "elfac.y" /* yacc.c:1646  */
-    {
-            
-             if (((strcmp((yyvsp[-2].valoare)->tip, "int") == 0 || strcmp((yyvsp[-2].valoare)->tip, "string") == 0) && (strcmp((yyvsp[0].valoare)->tip, "string") == 0 || strcmp((yyvsp[0].valoare)->tip, "char") == 0))
-                 || ((strcmp((yyvsp[0].valoare)->tip, "int") == 0 || strcmp((yyvsp[0].valoare)->tip, "string") == 0) && (strcmp((yyvsp[-2].valoare)->tip, "string") == 0 && strcmp((yyvsp[-2].valoare)->tip, "char") == 0)))
-             {
-               
-               printf("Nu se pot efectua operatii cu 2 tipuri diferite\n");
-               fflush(stdout);
-               free((yyval.valoare));
-             } 
-             else
-             {
-               if ((strcmp((yyvsp[-2].valoare)->tip, "int") == 0 && strcmp((yyvsp[0].valoare)->tip, "float") == 0) || (strcmp((yyvsp[-2].valoare)->tip, "float") == 0 && strcmp((yyvsp[0].valoare)->tip, "int") == 0))
-               {
-                 strcpy((yyval.valoare)->tip, "float");
-               }
-               if (strcmp((yyvsp[-2].valoare)->tip, (yyvsp[0].valoare)->tip) == 0)
-               {
-                 strcpy((yyval.valoare)->tip, (yyvsp[-2].valoare)->tip);
-               }
-               if (strcmp((yyval.valoare)->tip, "int") == 0)
-               {
-                 (yyval.valoare)->valint = (yyvsp[-2].valoare)->valint / (yyvsp[0].valoare)->valint;
-               }
-               if (strcmp((yyval.valoare)->tip, "float") == 0)
-               {
-                 if(strcmp((yyvsp[-2].valoare)->tip, "int") == 0)
-                    (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valint / (yyvsp[0].valoare)->valfloat;
-                 else if(strcmp((yyvsp[0].valoare)->tip, "int") == 0)
-                    (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valfloat / (yyvsp[0].valoare)->valint;
-                 else
-                    (yyval.valoare)->valfloat = (yyvsp[-2].valoare)->valfloat / (yyvsp[0].valoare)->valfloat;
-               }
-               if(strcmp((yyval.valoare)->tip, "string") == 0)
-               {
-                 (yyval.valoare)->valstring = (char*)malloc(128);
-                 strcpy((yyval.valoare)->valstring, strcat((yyvsp[-2].valoare)->valstring, (yyvsp[0].valoare)->valstring));
-               }
-              }
-          }
-#line 1727 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 48:
-#line 396 "elfac.y" /* yacc.c:1646  */
-    { 
-          printf("linia %d merge\n", yylineno);
-          fflush(stdout);
-          (yyval.valoare) = (yyvsp[0].valoare); 
-        }
-#line 1737 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 49:
-#line 402 "elfac.y" /* yacc.c:1646  */
-    {
-          (yyval.valoare) = (struct varval*)malloc(sizeof(struct varval));
-          (yyval.valoare)->tip = (char*)malloc(128);
-          for (int i = 0; i < nrvar; i++)
-          {
-            if (strcmp(programvars[i]->nume, (yyvsp[0].valSTRING)) == 0)
-            {
-              strcpy((yyval.valoare)->tip, (yyvsp[0].valSTRING));
-              if (strcmp((yyval.valoare)->tip, "int") == 0)
-              {
-                 (yyval.valoare)->valint = programvars[i]->valint;
-              }
-              if (strcmp((yyval.valoare)->tip, "float") == 0)
-              {
-                 (yyval.valoare)->valfloat = programvars[i]->valfloat;
-              }
-              if (strcmp((yyval.valoare)->tip, "string") == 0)
-              {
-                 (yyval.valoare)->valstring = (char*)malloc(128);
-                 strcpy((yyval.valoare)->valstring, programvars[i]->valstring);
               }
             }
             else
             {
-              printf("variabila nu a fost declarata\n");
+              
+              yyerror("Nu se pot efectua operatii intre variabile de scope diferit\n");
+              fflush(stdout);
             }
           }
+#line 1890 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 86:
+#line 523 "elfac.y" /* yacc.c:1646  */
+    {
+         if (((yyvsp[-2].variabila)->varscope != NULL && (yyvsp[0].variabila)->varscope == NULL) || ((yyvsp[-2].variabila)->varscope == NULL && (yyvsp[0].variabila)->varscope != NULL) || ((yyvsp[-2].variabila)->varscope == NULL && (yyvsp[0].variabila)->varscope == NULL) || ((yyvsp[-2].variabila)->varscope != NULL && (yyvsp[0].variabila)->varscope != NULL && strcmp((yyvsp[-2].variabila)->varscope, (yyvsp[0].variabila)->varscope) == 0))  
+          {   
+             if (((strcmp((yyvsp[-2].variabila)->tip, "int") == 0 || strcmp((yyvsp[-2].variabila)->tip, "string") == 0) && (strcmp((yyvsp[0].variabila)->tip, "string") == 0 || strcmp((yyvsp[0].variabila)->tip, "char") == 0))
+                 || ((strcmp((yyvsp[0].variabila)->tip, "int") == 0 || strcmp((yyvsp[0].variabila)->tip, "string") == 0) && (strcmp((yyvsp[-2].variabila)->tip, "string") == 0 && strcmp((yyvsp[-2].variabila)->tip, "char") == 0)))
+             {
+               
+               yyerror("Nu se pot efectua operatii cu 2 tipuri diferite\n");
+               fflush(stdout);
+               free((yyval.variabila));
+             } 
+             else
+             {
+               if ((strcmp((yyvsp[-2].variabila)->tip, "int") == 0 && strcmp((yyvsp[0].variabila)->tip, "float") == 0) || (strcmp((yyvsp[-2].variabila)->tip, "float") == 0 && strcmp((yyvsp[0].variabila)->tip, "int") == 0))
+               {
+                 strcpy((yyval.variabila)->tip, "float");
+               }
+               if (strcmp((yyvsp[-2].variabila)->tip, (yyvsp[0].variabila)->tip) == 0)
+               {
+                 strcpy((yyval.variabila)->tip, (yyvsp[-2].variabila)->tip);
+               }
+               if (strcmp((yyval.variabila)->tip, "int") == 0)
+               {
+                 (yyval.variabila)->valint = (yyvsp[-2].variabila)->valint - (yyvsp[0].variabila)->valint;
+               }
+               if (strcmp((yyval.variabila)->tip, "float") == 0)
+               {
+                 if(strcmp((yyvsp[-2].variabila)->tip, "int") == 0)
+                    (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valint - (yyvsp[0].variabila)->valfloat;
+                 else if(strcmp((yyvsp[0].variabila)->tip, "int") == 0)
+                    (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valfloat - (yyvsp[0].variabila)->valint;
+                 else
+                    (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valfloat - (yyvsp[0].variabila)->valfloat;
+               }
+               if(strcmp((yyval.variabila)->tip, "string") == 0)
+               {
+                 (yyval.variabila)->valstring = (char*)malloc(128);
+                 strcpy((yyval.variabila)->valstring, strcat((yyvsp[-2].variabila)->valstring, (yyvsp[0].variabila)->valstring));
+               }
+             }
+            }
+            else
+            {
+              yyerror("Nu se pot efectua operatii intre variabile de scope diferit\n");
+              fflush(stdout);
+            }
+          }
+#line 1942 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 87:
+#line 571 "elfac.y" /* yacc.c:1646  */
+    {
+          if (((yyvsp[-2].variabila)->varscope != NULL && (yyvsp[0].variabila)->varscope == NULL) || ((yyvsp[-2].variabila)->varscope == NULL && (yyvsp[0].variabila)->varscope != NULL) || ((yyvsp[-2].variabila)->varscope == NULL && (yyvsp[0].variabila)->varscope == NULL) || ((yyvsp[-2].variabila)->varscope != NULL && (yyvsp[0].variabila)->varscope != NULL && strcmp((yyvsp[-2].variabila)->varscope, (yyvsp[0].variabila)->varscope) == 0))  
+          {   
+             if (((strcmp((yyvsp[-2].variabila)->tip, "int") == 0 || strcmp((yyvsp[-2].variabila)->tip, "string") == 0) && (strcmp((yyvsp[0].variabila)->tip, "string") == 0 || strcmp((yyvsp[0].variabila)->tip, "char") == 0))
+                 || ((strcmp((yyvsp[0].variabila)->tip, "int") == 0 || strcmp((yyvsp[0].variabila)->tip, "string") == 0) && (strcmp((yyvsp[-2].variabila)->tip, "string") == 0 && strcmp((yyvsp[-2].variabila)->tip, "char") == 0)))
+             {
+               
+               yyerror("Nu se pot efectua operatii cu 2 tipuri diferite");
+               fflush(stdout);
+               free((yyval.variabila));
+             } 
+             else
+             {
+               if ((strcmp((yyvsp[-2].variabila)->tip, "int") == 0 && strcmp((yyvsp[0].variabila)->tip, "float") == 0) || (strcmp((yyvsp[-2].variabila)->tip, "float") == 0 && strcmp((yyvsp[0].variabila)->tip, "int") == 0))
+               {
+                 strcpy((yyval.variabila)->tip, "float");
+               }
+               if (strcmp((yyvsp[-2].variabila)->tip, (yyvsp[0].variabila)->tip) == 0)
+               {
+                 strcpy((yyval.variabila)->tip, (yyvsp[-2].variabila)->tip);
+               }
+               if (strcmp((yyval.variabila)->tip, "int") == 0)
+               {
+                 (yyval.variabila)->valint = (yyvsp[-2].variabila)->valint * (yyvsp[0].variabila)->valint;
+               }
+               if (strcmp((yyval.variabila)->tip, "float") == 0)
+               {
+                 if(strcmp((yyvsp[-2].variabila)->tip, "int") == 0)
+                    (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valint * (yyvsp[0].variabila)->valfloat;
+                 else if(strcmp((yyvsp[0].variabila)->tip, "int") == 0)
+                    (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valfloat * (yyvsp[0].variabila)->valint;
+                 else
+                    (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valfloat * (yyvsp[0].variabila)->valfloat;
+               }
+               if(strcmp((yyval.variabila)->tip, "string") == 0)
+               {
+                 (yyval.variabila)->valstring = (char*)malloc(128);
+                 strcpy((yyval.variabila)->valstring, strcat((yyvsp[-2].variabila)->valstring, (yyvsp[0].variabila)->valstring));
+               }
+              }
+            } 
+            else
+            {
+              yyerror("Nu se pot efectua operatii intre variabile de scope diferit\n");
+              fflush(stdout);
+            } 
+          }
+#line 1994 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 88:
+#line 619 "elfac.y" /* yacc.c:1646  */
+    {
+          if (((yyvsp[-2].variabila)->varscope != NULL && (yyvsp[0].variabila)->varscope == NULL) || ((yyvsp[-2].variabila)->varscope == NULL && (yyvsp[0].variabila)->varscope != NULL) || ((yyvsp[-2].variabila)->varscope == NULL && (yyvsp[0].variabila)->varscope == NULL) || ((yyvsp[-2].variabila)->varscope != NULL && (yyvsp[0].variabila)->varscope != NULL && strcmp((yyvsp[-2].variabila)->varscope, (yyvsp[0].variabila)->varscope) == 0))  
+          {  
+          
+             if (((strcmp((yyvsp[-2].variabila)->tip, "int") == 0 || strcmp((yyvsp[-2].variabila)->tip, "string") == 0) && (strcmp((yyvsp[0].variabila)->tip, "string") == 0 || strcmp((yyvsp[0].variabila)->tip, "char") == 0))
+                 || ((strcmp((yyvsp[0].variabila)->tip, "int") == 0 || strcmp((yyvsp[0].variabila)->tip, "string") == 0) && (strcmp((yyvsp[-2].variabila)->tip, "string") == 0 && strcmp((yyvsp[-2].variabila)->tip, "char") == 0)))
+             {
+               yyerror("Nu se pot efectua operatii cu 2 tipuri diferite\n");
+               fflush(stdout);
+               free((yyval.variabila));
+             } 
+             else
+             {
+               if ((strcmp((yyvsp[-2].variabila)->tip, "int") == 0 && strcmp((yyvsp[0].variabila)->tip, "float") == 0) || (strcmp((yyvsp[-2].variabila)->tip, "float") == 0 && strcmp((yyvsp[0].variabila)->tip, "int") == 0))
+               {
+                 strcpy((yyval.variabila)->tip, "float");
+               }
+               if (strcmp((yyvsp[-2].variabila)->tip, (yyvsp[0].variabila)->tip) == 0)
+               {
+                 strcpy((yyval.variabila)->tip, (yyvsp[-2].variabila)->tip);
+               }
+               if (strcmp((yyval.variabila)->tip, "int") == 0)
+               {
+                 (yyval.variabila)->valint = (yyvsp[-2].variabila)->valint / (yyvsp[0].variabila)->valint;
+               }
+               if (strcmp((yyval.variabila)->tip, "float") == 0)
+               {
+                 if(strcmp((yyvsp[-2].variabila)->tip, "int") == 0)
+                    (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valint / (yyvsp[0].variabila)->valfloat;
+                 else if(strcmp((yyvsp[0].variabila)->tip, "int") == 0)
+                    (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valfloat / (yyvsp[0].variabila)->valint;
+                 else
+                    (yyval.variabila)->valfloat = (yyvsp[-2].variabila)->valfloat / (yyvsp[0].variabila)->valfloat;
+               }
+               if(strcmp((yyval.variabila)->tip, "string") == 0)
+               {
+                 (yyval.variabila)->valstring = (char*)malloc(128);
+                 strcpy((yyval.variabila)->valstring, strcat((yyvsp[-2].variabila)->valstring, (yyvsp[0].variabila)->valstring));
+               }
+              }
+            } 
+            else
+            {
+              yyerror("Nu se pot efectua operatii intre variabile de scope diferit\n");
+              fflush(stdout);
+            } 
+          }
+#line 2046 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 89:
+#line 667 "elfac.y" /* yacc.c:1646  */
+    { 
+          
+          struct var* auxvar = (struct var*)malloc(sizeof(struct var));
+          auxvar->tip = (char*)malloc(128);
+          auxvar->valstring = (char*)malloc(128);
+          auxvar->varscope = (char*)malloc(128);
+          auxvar->varscope = NULL;
+          if (strcmp((yyvsp[0].valoare)->tip, "int") == 0)
+          {
+            strcpy(auxvar->tip, (yyvsp[0].valoare)->tip);
+            auxvar->valint = (yyvsp[0].valoare)->valint;
+          } 
+          if (strcmp((yyvsp[0].valoare)->tip, "float") == 0)
+          {
+            strcpy(auxvar->tip, (yyvsp[0].valoare)->tip);
+            auxvar->valfloat = (yyvsp[0].valoare)->valfloat;
+          } 
+          if (strcmp((yyvsp[0].valoare)->tip, "string") == 0)
+          {
+            strcpy(auxvar->tip, (yyvsp[0].valoare)->tip);
+            strcpy(auxvar->valstring, (yyvsp[0].valoare)->valstring);
+          } 
+          (yyval.variabila) = (struct var*)malloc(sizeof(struct var));
+          (yyval.variabila) = auxvar;
         }
-#line 1770 "y.tab.c" /* yacc.c:1646  */
+#line 2076 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 90:
+#line 693 "elfac.y" /* yacc.c:1646  */
+    {
+          (yyval.variabila) = (struct var*)malloc(sizeof(struct var));
+          (yyval.variabila)->tip = (char*)malloc(128);
+          int varnumar = 0;
+          for (int i = 0; i < nrvar && varnumar == 0; i++)
+          {
+            
+            if (strcmp(programvars[i]->nume, (yyvsp[0].valSTRING)) == 0)
+            {
+               
+               varnumar = 1;
+            }
+          }
+          if (varnumar == 1)
+          {
+             
+            strcpy((yyval.variabila)->tip, programvars[varnumar]->tip);
+            if (strcmp((yyval.variabila)->tip, "int") == 0)
+            {
+                (yyval.variabila)->valint = programvars[varnumar]->valint;
+            }
+            if (strcmp((yyval.variabila)->tip, "float") == 0)
+            {
+                (yyval.variabila)->valfloat = programvars[varnumar]->valfloat;
+            }
+            if (strcmp((yyval.variabila)->tip, "string") == 0)
+            {
+               (yyval.variabila)->valstring = (char*)malloc(128);
+               strcpy((yyval.variabila)->valstring, programvars[varnumar]->valstring);
+            }
+          }
+          if (varnumar == 0)
+          { 
+            yyerror("Variabila nu a fost declarata, linia \n");
+          }      
+        }
+#line 2117 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1774 "y.tab.c" /* yacc.c:1646  */
+#line 2121 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1998,7 +2345,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 434 "elfac.y" /* yacc.c:1906  */
+#line 732 "elfac.y" /* yacc.c:1906  */
 
 
 int yyerror(char * s)
@@ -2012,9 +2359,4 @@ int main(int argc, char** argv)
 {
   yyin=fopen(argv[1],"r");
   yyparse();
-  for (int i = 0; i < nrvar; i++)
-              {
-                 printf("Variabilele urmatoare au fost declarate: %s \n", programvars[i]->nume);
-                 fflush(stdout);
-              }
 }

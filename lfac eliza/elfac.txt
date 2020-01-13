@@ -1,17 +1,36 @@
+class complex
+{
+   extern:
+     cvar int re;
+   intern:
+     cvar int im;  
+};
+ma (int param, int paramm) -> int
+{
+  fvar int rez -> 2;
+  marez -> param + paramm;
+  marez -> param / 2;
+  return marez;
+};
+
 var int a -> 3;
 var int b -> 4;
-var char l;
+var char l, x;
 var float o -> 3.0;
 var float r;
-var int a;
+var float rez;
+var int r;
 main
 begin
-  b -> 3;
-  b -> 3 + 1;
-  b -> 6;
+  eval(a);
+  a -> a + zz;
   if (a equal b) then
   {
-    print (l);
+    print ( l );
+  }
+  else
+  {
+    print (3);
   };
   r -> 9.2;
   l -> 'o';

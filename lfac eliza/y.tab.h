@@ -51,33 +51,36 @@ extern int yydebug;
     RETURN = 261,
     TIPVAR = 262,
     ID = 263,
-    SINGLECHAR = 264,
-    STRING = 265,
-    BGIN = 266,
-    END = 267,
-    MAIN = 268,
-    IF = 269,
-    CLASS = 270,
-    INTERN = 271,
-    EXTERN = 272,
-    INT = 273,
-    ELSE = 274,
-    RETRN = 275,
-    AND = 276,
-    OR = 277,
-    EQUAL = 278,
-    GE = 279,
-    LE = 280,
-    GL = 281,
-    THEN = 282,
-    WHILE = 283,
-    DO = 284,
-    CHAR = 285,
-    BOOL = 286,
-    FLOAT = 287,
-    NRFLOAT = 288,
-    FALSE = 289,
-    TRUE = 290
+    FUNCTIONVAR = 264,
+    EVAL = 265,
+    CLASSVAR = 266,
+    SINGLECHAR = 267,
+    STRING = 268,
+    BGIN = 269,
+    END = 270,
+    MAIN = 271,
+    IF = 272,
+    CLASS = 273,
+    INTERN = 274,
+    EXTERN = 275,
+    INT = 276,
+    ELSE = 277,
+    RETRN = 278,
+    AND = 279,
+    OR = 280,
+    EQUAL = 281,
+    GE = 282,
+    LE = 283,
+    GL = 284,
+    THEN = 285,
+    WHILE = 286,
+    DO = 287,
+    CHAR = 288,
+    BOOL = 289,
+    FLOAT = 290,
+    NRFLOAT = 291,
+    FALSE = 292,
+    TRUE = 293
   };
 #endif
 /* Tokens.  */
@@ -87,40 +90,43 @@ extern int yydebug;
 #define RETURN 261
 #define TIPVAR 262
 #define ID 263
-#define SINGLECHAR 264
-#define STRING 265
-#define BGIN 266
-#define END 267
-#define MAIN 268
-#define IF 269
-#define CLASS 270
-#define INTERN 271
-#define EXTERN 272
-#define INT 273
-#define ELSE 274
-#define RETRN 275
-#define AND 276
-#define OR 277
-#define EQUAL 278
-#define GE 279
-#define LE 280
-#define GL 281
-#define THEN 282
-#define WHILE 283
-#define DO 284
-#define CHAR 285
-#define BOOL 286
-#define FLOAT 287
-#define NRFLOAT 288
-#define FALSE 289
-#define TRUE 290
+#define FUNCTIONVAR 264
+#define EVAL 265
+#define CLASSVAR 266
+#define SINGLECHAR 267
+#define STRING 268
+#define BGIN 269
+#define END 270
+#define MAIN 271
+#define IF 272
+#define CLASS 273
+#define INTERN 274
+#define EXTERN 275
+#define INT 276
+#define ELSE 277
+#define RETRN 278
+#define AND 279
+#define OR 280
+#define EQUAL 281
+#define GE 282
+#define LE 283
+#define GL 284
+#define THEN 285
+#define WHILE 286
+#define DO 287
+#define CHAR 288
+#define BOOL 289
+#define FLOAT 290
+#define NRFLOAT 291
+#define FALSE 292
+#define TRUE 293
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 14 "elfac.y" /* yacc.c:1909  */
+#line 15 "elfac.y" /* yacc.c:1909  */
  
   int valINT;
   float valFLOAT;
@@ -131,7 +137,7 @@ union YYSTYPE
   struct var** varvector;
   struct varval* valoare;
 
-#line 135 "y.tab.h" /* yacc.c:1909  */
+#line 141 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

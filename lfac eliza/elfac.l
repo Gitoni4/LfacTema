@@ -14,6 +14,12 @@ extern int yylex();
 \'[a-zA-Z0-9]\' { return SINGLECHAR; } 
 main { return MAIN; }
 return { return RETRN; }
+class { return CLASS; }
+extern { return EXTERN; }
+eval { return EVAL; }
+intern { return INTERN; }
+cvar { return CLASSVAR; }
+fvar { return FUNCTIONVAR; }
 var { return VAR; }
 begin { return BGIN; }
 print { return PRINT; }
